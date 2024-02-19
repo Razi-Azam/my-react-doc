@@ -95,7 +95,8 @@ is Babel a transpiler or compiler or both?
 
 #### Babel Website to see the conversion of React and its equivalent JS code.
 #### [https://babeljs.io/](https://babeljs.io)
-Image here
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/175fd815-6aa3-4e08-850c-89282f1bc2ca)
+
 
 
 ---
