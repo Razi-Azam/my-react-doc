@@ -3,7 +3,7 @@
 
 Complete React notes prepared by Razi using codevolution YouTube Channel, react Docs, and other resources, etc.
 
-## Topicss
+## Topics
 
 [1. Components](#react-elements-and-components)
 
