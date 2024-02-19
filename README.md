@@ -1,7 +1,9 @@
 
 # My React Doc
 
-Complete React notes prepared by Razi using codevolution YouTube Channel, react Docs, and other resources, etc.
+Complete React notes prepared by Razi using codevolution YouTube Channel, react docs, DEV, Wikipedia, and stackoverflow.
+
+Special Credit: [Codevolution](https://youtu.be/QFaFIcGhPoM?si=eqV1RlPn3DNjwfPN)
 
 ## Topics
 
@@ -12,7 +14,7 @@ Complete React notes prepared by Razi using codevolution YouTube Channel, react 
 
 
 
-###  React Elements and Components 
+##  React Elements and Components 
 [Go to Top](#topics)
 
 ## Root Component:
@@ -51,6 +53,51 @@ const element = <div>Hello World</div>;
 - It is not required by React to use JSX. Instead, we can use the createElement API for the same.
 
 ### Why JSX?
+- React follows the principle of rendering logic coupled with Ul logic. So React uses JSX for rendering both markup and logic together in a single file instead of keeping them separately. 
+- Using JSX, it becomes easier to work with the UI inside JavaScript code.
+- We can embed any JavaScript expression inside JSX using curly braces.
+```javascript
+const name='John';
 
-###  Props and State 
+const element = <div>Hello (name) </div>
+
+ReactDOM.render(
+element,
+document.getElementById('root')
+);
+
+```
+- We can assign JSX to a variable.
+```javascript
+const element=<div>Hello World</div>
+```
+- We can also return JSX from a function.
+```javascript
+const getAgeDescription=(age)=>{
+
+    if (age<50) {
+        return <h1>You're young</h1>; 
+    }
+    
+    return <h1>You're old</h1>;
+}
+
+```
+### Babel
+- There is an issue with the JSX that it cannot be understood by the browsers. 
+- So Babel is the transpolar or compiler that converts JSX syntax to something that can be understood by the Browser 
+- Babel converts ECMAScript 2015+ (ES6+) code into backwards-compatible JavaScript code that can be run by older JavaScript engines
+
+is Babel a transpiler or compiler or both?
+- It is both or can be used interchangeably.
+- A transpiler converts the one code to other in the same level (Babel converts JSX to something that older browsers can understand)
+- A compiler converts the programming language into machine code that is understood by the machine.
+
+#### Babel Website to see the conversion of React and its equivalent JS code.
+#### [https://babeljs.io/](https://babeljs.io)
+Image here
+
+
+---
+##  Props and State 
 [Go to Top](#topics)
