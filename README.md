@@ -170,3 +170,27 @@ const Hello = () => {
 ---
 ##  Props and State 
 [Go to Top](#topics)
+### Props
+- It is just an object that contains the attributes and their values which have been passed from the parent component.
+- It is always passed from parent to child.
+- App.js
+  ![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/b31e81a1-15a4-4011-ae45-26214fcaa523)
+- Greet.js
+  ![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/2de27fba-40c3-48b8-8f1f-4870d42694d4)
+- Console Output:
+- ![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/eed1d6a7-294e-47d1-822e-a8a4c9c04d7e)
+- It is used as an argument to pass into React components.
+- It is passed to components via HTML attributes.
+- It is accessed in JSX inside curly braces.
+  ![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/cf08eaa1-1b4d-4ddf-b522-ae8d1aee7e6a)
+- It is immutable (It is read-only and its value cannot be changed.).
+- The children of components can be passed as props and accessed as “props.children” in other components.
+  ![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/bf06f2ac-299f-4f4f-bdc7-a6c415f5e884)
+- The paragraph '<'p'>' is the children of the Greet components. It can be accessed in the child component as “props.children”.
+  ![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/680e576c-f069-4219-8928-6fe7db3b3e82)
+
+
+### State
+
+
+
