@@ -97,7 +97,75 @@ is Babel a transpiler or compiler or both?
 #### [https://babeljs.io/](https://babeljs.io)
 ![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/175fd815-6aa3-4e08-850c-89282f1bc2ca)
 
+### Types of Components:
+- Functional Component
+- Class Component
 
+### Functional Component
+- These are, literally, JS functions, that takes props as an argument and returns JSX.
+```javascript
+function Hello(props){ 
+    return <div>Hello {props.name}</div>
+}   
+```
+#### Advantages of functional components:
+- Easy to read and understand.
+- Absence of "this" keyword.
+- Easy to test because we don't have to think about hidden state and side effects.
+- It requires less code and faster bundles.
+- It reduces coupling (Coupling refers to the degree of dependency between one entity to another. Low coupling in code means that we can change one area of our code without impacting another due to which our code becomes maintainable.).
+
+#### Disadvantages of functional components:
+- Not suitable for handling complex logic as compared to class. 
+- Absence of "this" keyword.
+
+### Class Component
+- These are ES6 classes extend the Component class of the React library (React.Component) and create a render function which returns a React element.
+
+```javascript
+class Hello extends React.Component{
+    render(){
+        return <div>Hello {this.props.name}</div>
+    }
+}
+```
+
+#### Advantages of class components:
+- More feature rich. 
+- Maintain their own private data (state).
+- Can handle complex Ul logic.
+- Provide lifecycle methods.
+- It is called smart or Stateful, or container component.
+
+#### Disadvantages of class components:
+- Presence of "this" keyword. It quite tricky for the beginners. 
+- We can't think about a solution without using state.
+
+#### A React component with or without JSX:
+NOTE: the commented code is "JSX" and the next return statement contains the React element without JSX.
+
+```javascript
+import React from 'react'
+
+const Hello = () => {
+    // return (
+    //     <div className='dummyClass'>
+    //         <h1>Hello Razi</h1>
+    //     </div>
+    // )
+    return React.createElement (
+        'div',
+        {id: 'hello', className: 'dummyClass'},
+        React.createElement('h1', null, 'Hello Razi')
+    )
+}
+```
+#### JSX differences
+
+| Color             | JSX                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| Class | className  |
+| for | htmlFor  |
 
 ---
 ##  Props and State 
