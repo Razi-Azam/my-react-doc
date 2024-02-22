@@ -191,6 +191,13 @@ const Hello = () => {
 
 
 ### State
+- It is built-in object that contains data or information about the component.
+- It is privately maintained inside the component.
+- A component’s state changes over time. Whenever it changes, the component re-renders.
+
+### Lab
+- Initialize the state object using the class constructor.
+- The super() method has been called within the constructor. Because we extend the React Component class and a call has to be made to the base class constructor.
 
 
 
