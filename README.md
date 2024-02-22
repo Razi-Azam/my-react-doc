@@ -198,6 +198,130 @@ const Hello = () => {
 ### Lab
 - Initialize the state object using the class constructor.
 - The super() method has been called within the constructor. Because we extend the React Component class and a call has to be made to the base class constructor.
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/c424b9df-bb80-47dd-919e-fa9fe73b356a)
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/d6467556-c480-4926-a86b-7657c99e6f81)
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/d7e64d51-78bd-4f1c-aaf7-21588d62aa9d)
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/3752e2f0-b69d-4b5d-928e-90737cedda51)
 
+### Difference between Props and State:
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/77106860-4481-48dc-873a-9b18eefdaf2e)
 
+### setState
+- It helps in changing the state in React class components.
+- It enqueues change to the component state and tell React that this component and its children need to be re-rendered with the updated state.
+- Calls to setState method are asynchronous.
+
+##### NOTE: Synchronous means the code runs in a particular sequence of instructions given in the program, whereas asynchronous code execution allows to execution of the upcoming instructions immediately. Because of asynchronous programming, we can avoid the blocking of tasks due to the previous instructions.
+
+### Sample Code:
+```javascript
+import React, { Component } from 'react'
+
+class Counter extends Component {
+
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            count: 0
+        }
+    }
+
+    increment() {
+        this.setState(
+            {
+                count: this.state.count + 1
+            },
+            () => {
+                console.log('Callback value', this.state.count)
+            }
+        )
+        console.log(this.state.count)
+    }
+
+    render() {
+        return (
+            <div>
+                <div>Count: {this.state.count}</div>
+                <button 
+                    onClick={this.increment()}>Increment
+                </button>
+            </div>
+        )
+    }
+}
+
+export default Counter
+```
+### Do’s and Don’t’s
+- Always Place the code (that needs to be executed just after the state update) inside the callback function as a second parameter of the setState method.
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/0c13e93b-6812-4867-b12c-1653d3882fae)
+- The first value in the console, which is 0, is coming from line no. 21 as a synchronous call.
+- The second value, which is 1, is coming from the console.log which is inside the callback and updated when the state is changed.
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/adb58321-7d15-46e2-a8f4-966f579f580c)
+
+#### Scenario: call the increment method five times and log the value.
+#### Code:'
+```javascript
+    incrementFive() {
+        this.increment()
+        this.increment()
+        this.increment()
+        this.increment()
+        this.increment()
+    }
+
+    render() {
+        return (
+            <div>
+                <div>Count: {this.state.count}</div>
+                <button 
+                    onClick={this.incrementFive()}>Increment
+                </button>
+            </div>
+        )
+    }
+```
+#### Output:
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/3302d86e-06a3-4b91-8f20-694b5c42c5e7)
+#### Bug: ❌
+The value changes to 1 instead of 5. The ‘0’ is logged five times instead of incrementing to 5.
+#### Reason? 🤔
+This happens because React may group multiple setState calls into a single update for a better performance. That’s why all the setState calls are done in one single go and the update value doesn’t carry over between the different calls.
+#### Solution ✅
+When you have to update the state based on the previous state, pass a function as an argument to the setState method instead of passing a regular object.
+```javascript
+increment() {
+        // this.setState(
+        //     {
+        //         count: this.state.count + 1
+        //     },
+        //     () => {
+        //         console.log('Callback value', this.state.count)
+        //     }
+        // )
+        this.setState(prevState => ({
+            count: prevState.count + 1
+        }))
+
+        console.log(this.state.count)
+    }
+```
+#### Note 📝 Here, 0 is showing five times because of the synchronous ‘concole.log’. To show the update value either click one more time or put the console statement as the second parameter in the set state method.
+
+#### Output:
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/48c1edc1-7f32-4724-a2f6-fde3cd65c1ba)
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/e9708bc4-86f0-4a5e-897e-c3018f1ff232)
+
+- If state is depend upon props as well, then we can pass props as the second parameter to the setState method.
+```javascript
+        //second parameter is props object
+        //it is used when state is dependent on props as well
+        this.setState((prevState, props) => ({
+            count: prevState.count + props.addValue
+        }))
+```
+
+### Summary
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/14a128ef-9428-4dbe-b1d1-c262b9881af6)
 
