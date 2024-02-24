@@ -255,7 +255,7 @@ export default Counter
 ```
 ### Do’s and Don’t’s
 - Always Place the code (that needs to be executed just after the state update) inside the callback function as a second parameter of the setState method.
-![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/0c13e93b-6812-4867-b12c-1653d3882fae)
+- ![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/0c13e93b-6812-4867-b12c-1653d3882fae)
 - The first value in the console, which is 0, is coming from line no. 21 as a synchronous call.
 - The second value, which is 1, is coming from the console.log which is inside the callback and updated when the state is changed.
 ![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/adb58321-7d15-46e2-a8f4-966f579f580c)
