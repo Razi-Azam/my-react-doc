@@ -11,6 +11,8 @@ Special Credit: [Codevolution](https://youtu.be/QFaFIcGhPoM?si=eqV1RlPn3DNjwfPN)
 
 [2. Props and State](#props-and-state)
 
+[2. Destructuring Props](#destructuring-props)
+
 
 
 
@@ -324,4 +326,17 @@ increment() {
 
 ### Summary
 ![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/14a128ef-9428-4dbe-b1d1-c262b9881af6)
+
+---
+
+## Destructuring Props
+#### What is Destructuring?
+It is an ES6 feature of JS to unpack values from arrays or properties from objects
+Into distinct variables.
+#### In Functional Components:
+Passing props to the component named Greek:
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/24ecc43e-c43e-4c6c-8f4f-356720902829)
+
+#### Two ways of Destructuring:
+- [1] Destructure it in the function parameter itself.
 
