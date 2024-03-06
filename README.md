@@ -339,4 +339,57 @@ Passing props to the component named Greek:
 
 #### Two ways of Destructuring:
 - [1] Destructure it in the function parameter itself.
+```javascript
+import React from 'react'
 
+const Greet = ({name, heroName}) => {
+    return (
+        <div>
+            <h1>
+                Hello {name} a.k.a {heroName}
+            </h1>
+        </div>
+    )
+}
+
+export default Greet
+```
+##### NOTE: a.k.a = Also Known AS
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/1c1f9639-ad61-45b9-a08d-7e6cc29743f4)
+- [2] Destructure it in the function body
+```javascript
+import React from 'react'
+
+const Greet = props => {
+    const {name, heroName} = props
+    
+    return (
+        <div>
+            <h1>
+                Hello {name} a.k.a {heroName}
+            </h1>
+        </div>
+    )
+}
+
+export default Greet
+```
+#### In Class Components:
+- Destructure it inside the render method.
+```javascript
+import React, { Component } from 'react'
+
+class Welcome extends Component {
+    render() {
+        //destructuring props
+        const {name, heroName} = this.props
+        return (
+            <div>
+                hello {name} a.k.a {heroName}
+            </div>
+        )
+    }
+}
+
+export default Welcome
+```
