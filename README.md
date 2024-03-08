@@ -11,7 +11,9 @@ Special Credit: [Codevolution](https://youtu.be/QFaFIcGhPoM?si=eqV1RlPn3DNjwfPN)
 
 [2. Props and State](#props-and-state)
 
-[2. Destructuring Props](#destructuring-props)
+[3. Destructuring Props](#destructuring-props)
+
+[4. Event Handling](#event-handling)
 
 
 
@@ -330,6 +332,7 @@ increment() {
 ---
 
 ## Destructuring Props
+[Go to Top](#topics)
 #### What is Destructuring?
 It is an ES6 feature of JS to unpack values from arrays or properties from objects
 Into distinct variables.
@@ -392,4 +395,334 @@ class Welcome extends Component {
 }
 
 export default Welcome
+```
+
+---
+## Event Handling
+[Go to Top](#topics)
+### Event Handling in Functional Components:
+- React events are named using camel case. For example, onclick in vanilla JS but onClick in React.
+| Vanilla JS            | React                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| <button onclick=””>Click</button> | <button onClick={}>Click</button> |
+| onclick=”clickHandler()” |  onClick={clickHandler} |
+| Here, a function call “clickHandler()” is passed to the onclick prop. | Here, a function handler {clickHandler} is passed to the onClick prop. |
+
+- If we pass “clickhandler()” function call instead of “clickHandler” function, the react rendered it automatically and it will not do anything even after clicking on the button. So It is recommended to pass a function handler instead of a function call.
+```javascript
+import React from 'react'
+
+function FunctionClick() {
+
+    function clickHandler() {
+        console.log("Clicked")
+    }
+
+    return (
+        <div>
+            <button onClick={clickHandler}>Click</button>
+        </div>
+    )
+}
+
+export default FunctionClick
+```
+
+### Event Handling in Class Components:
+- Here, the method is accessed using “this” keyword.
+```javascript
+	import React, { Component } from 'react'
+	
+	class ClassClick extends Component {    
+    clickHandler(){
+        console.log("Button is Clicked")
+    }
+
+    render() {
+        return (
+            <div>
+                <button onClick={this.clickHandler}>Click Me</button>
+            </div>
+        )
+    }
+}
+
+export default ClassClick
+```
+### Binding Event Handlers:
+#### Code:
+```javascript
+import React, { Component } from 'react'
+
+class EventBind extends Component {
+
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            message: 'hello'
+        }
+    }
+
+    clickHandler() {
+        this.setState({
+            message: 'Good Bye'
+        })
+        console.log(this)
+    }
+    
+    render() {
+        return (
+            <div>
+                <div>{this.state.message}</div>
+                <button onClick={this.clickHandler}>Event Bind Button</button>
+            </div>
+        )
+    }
+}
+
+export default EventBind
+```
+#### Output:
+- When clicked on the “Event Bind Button”
+- ![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/6a9e3f51-b60a-4ba6-a9fc-551f35a83936)
+- When comment out the setState method and run, the output is:
+```javascript
+    clickHandler() {
+        // this.setState({
+        //     message: 'Good Bye'
+        // })
+        console.log(this)
+    }
+```
+#### Output:
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/4fa45c70-bf55-499d-8b41-f6bd586df19d)
+
+Here, the keyword “this” inside the handler is undefined.
+#### Reason of the Bug:🤔
+- The “this” keyword is undefined not because of React but it is because of JS itself.
+- In non-strict mode, inside the function, the “this” points to the Global Object. So it won’t show the output as undefined.
+- But, in Strict Mode, inside the function, the “this” keyword refers to undefined instead of Global (Window) object. So, when the event handler is called on global object, it calls on an undefined object.
+- In JavaScript, class methods are not bound by default unless we specifically bind them, they are just function objects.
+➡️For more details on binding: [Click Here to read freecodecamp post](https://www.freecodecamp.org/news/this-is-why-we-need-to-bind-event-handlers-in-class-components-in-react-f7ea1a6f93eb/)
+✅ Solution:
+- The “this” keyword needs to be bound with the React Component so that It should points to the current object instead of the global object.
+- For this, a bind keyword is used.
+
+##### ✅1️⃣Approach 1: Binding in the render method:
+```javascript
+render() {
+        return (
+            <div>
+                <div>{this.state.message}</div>
+                <button onClick={this.clickHandler.bind(this)}>Event Bind Button</button>
+            </div>
+        )
+    }
+}
+```
+- When the button is clicked, the updated state is displayed. Also, the “this” inside the console prints the EventBind component. Because it points to the current object.
+- ![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/7b588e69-2d30-4e1d-b3a7-ee5a534829a9)
+##### 🤔Issue with this method:
+- Every update to the component will cause re-render due to which a brand new handler will be generated on every render. It would impact on the performance in case of larger applications and the components that contains nested children components.
+
+##### ✅2️⃣Approach 2: Using Arrow function in the render method:
+- Here, the parenthesis is required with the event handler because we are calling the event handler and return the value.
+```javascript
+render() {
+        return (
+            <div>
+                <div>{this.state.message}</div>
+                {/* <button 
+                        onClick={this.clickHandler.bind(this)}>Event Bind Button
+                    </button> */}
+                <button 
+                    onClick={() => this.clickHandler()}>Event Bind Button
+                </button>
+            </div>
+        )
+    }
+```
+##### 🤔 Issue: This approach would also have impact on the performance.
+
+##### ✅3️⃣Approach 3: Binding in the class constructor.
+```javascript
+constructor(props) {
+        super(props)
+
+        this.state = {
+            message: 'hello'
+        }
+
+        this.clickHandler = this.clickHandler.bind(this)
+    }
+
+render() {
+        return (
+            <div>
+                <div>{this.state.message}</div>
+                {/* <button 
+                        onClick={this.clickHandler.bind(this)}>Event Bind Button
+                    </button> */}
+                {/* <button 
+                    onClick={() => this.clickHandler()}>Event Bind Button
+                </button> */}
+                <button 
+                    onClick={this.clickHandler}>Event Bind Button
+                </button>
+            </div>
+        )
+    }
+```
+
+#### ✅ Final Approach: ✌🏻
+- Use an arrow function as a class property.
+```javascript
+import React, { Component } from 'react'
+
+class EventBind extends Component {
+
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            message: 'hello'
+        }
+
+        // this.clickHandler = this.clickHandler.bind(this)
+    }
+
+    // clickHandler() {
+    //     this.setState({
+    //         message: 'Good Bye'
+    //     })
+    //     console.log(this)
+    // }
+
+    clickHandler = () => {
+        this.setState({
+            message: 'Good Bye'
+        })
+    }
+    
+    render() {
+        return (
+            <div>
+                <div>{this.state.message}</div>
+                {/* <button 
+                        onClick={this.clickHandler.bind(this)}>Event Bind Button
+                    </button> */}
+                {/* <button 
+                    onClick={() => this.clickHandler()}>Event Bind Button
+                </button> */}
+                <button 
+                    onClick={this.clickHandler}>Event Bind Button
+                </button>
+            </div>
+        )
+    }
+}
+
+export default EventBind
+```
+#### 📝 NOTE: The recommended approach according to the React Doc is either the Approach 3rd or the Final approach.
+
+### Method as props:
+#### Passing props from Parent to Child Component:
+- Create a Parent and a child component.
+- Define an event handler in the parent component that display a parent object’s name.
+- In the child component, create a button.
+- Include the child component in the render method of parent component by passing the event handler as props.
+- Access the event handler as props in the button click event of the child component.
+
+##### Parent Component:
+```javascript
+import React, { Component } from 'react'
+import ChildComponent from './ChildComponent'
+
+class ParentComponent extends Component {
+
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            parentName: 'Parent'
+        }
+
+        this.greetParent = this.greetParent.bind(this)
+    }
+
+    greetParent() {
+        alert(`Hello ${this.state.parentName}`)
+    }
+
+    render() {
+        return (
+            <div>
+                <ChildComponent greetHandler={this.greetParent} />
+            </div>
+        )
+    }
+}
+
+export default ParentComponent
+```
+
+##### Child Component:
+```javascript
+import React from 'react';
+
+function ChildComponent(props) {
+    return (
+        <div>
+            <button onClick={props.greetHandler}>Greet Parent</button>
+        </div>
+    );
+}
+
+export default ChildComponent;
+```
+
+##### App Component:
+```javascript
+import './App.css';
+import ParentComponent from './event-handling/ParentComponent';
+
+function App() {
+  return (
+    <div className="App">
+      <ParentComponent />
+    </div>
+  );
+}
+
+export default App;
+```
+
+##### Output:
+- When the button is clicked, the alert window display ‘Hello Parent’
+
+### Pass a parameter when calling a parent method from a child component:
+- In child Component, use an arrow function and pass a string as an argument.
+- In the parent component, include a parameter named ‘childName’ and display it in the alert window as well.
+
+##### Parent Component:
+```javascript
+    greetParent(childName) {
+        alert(`hello ${this.state.parentName} from ${childName}`)
+    }
+```
+
+##### Child Component:
+```javascript
+function ChildComponent(props) {
+    return (
+        <div>
+            <button 
+            onClick={() => props.greetHandler('child')}
+            >Greet Parent
+            </button>
+        </div>
+    );
+}
 ```
