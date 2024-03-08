@@ -402,6 +402,7 @@ export default Welcome
 [Go to Top](#topics)
 ### Event Handling in Functional Components:
 - React events are named using camel case. For example, onclick in vanilla JS but onClick in React.
+
 | Vanilla JS            | React                                                                |
 | ----------------- | ------------------------------------------------------------------ |
 | <button onclick=””>Click</button> | <button onClick={}>Click</button> |
@@ -505,7 +506,7 @@ Here, the keyword “this” inside the handler is undefined.
 - But, in Strict Mode, inside the function, the “this” keyword refers to undefined instead of Global (Window) object. So, when the event handler is called on global object, it calls on an undefined object.
 - In JavaScript, class methods are not bound by default unless we specifically bind them, they are just function objects.
 ➡️For more details on binding: [Click Here to read freecodecamp post](https://www.freecodecamp.org/news/this-is-why-we-need-to-bind-event-handlers-in-class-components-in-react-f7ea1a6f93eb/)
-✅ Solution:
+##### ✅ Solution:
 - The “this” keyword needs to be bound with the React Component so that It should points to the current object instead of the global object.
 - For this, a bind keyword is used.
 
