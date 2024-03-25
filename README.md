@@ -766,3 +766,57 @@ class UserGreeting extends Component {
 
 export default UserGreeting
 ```
+### [2] Element variables Approach:
+```javascript
+import React, { Component } from 'react'
+
+class UserGreeting extends Component {
+
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            isLoggedIn: true
+        }
+    }
+
+    render() {
+        let message
+
+        if(this.state.isLoggedIn) {
+            message = <div>Welcome Razi</div>
+        } else {
+            message = <div>Welcome Guest</div>
+        }
+
+        return <div>{message}</div>
+    }
+}
+
+export default UserGreeting
+
+```
+#### 🐞Demerits of the above two approaches are:
+- Cannot be used under JSX.
+- Code repetition.
+
+
+### [3] Ternary Conditional Operator Approach:
+```javascript
+    render() {
+        return this.state.isLoggedIn ? 
+        <div>Welcome Razi</div> : 
+        <div>Welcome Guest</div>
+    }
+```
+
+### [4] Short Circuit Operator Approach:
+- If we have to display something when the condition is true but don’t want to display anything when the condition is false, then this approached should be preferred.
+- The expression first evaluates the left hand side of the operator and if it is true then it also evaluates the right hand side.
+- If the left hind side evaluates to false then the right hand side will never be evaluated as It doesn’t affect the final value of the whole expression.
+
+```javascript
+    render() {
+        return this.state.isLoggedIn && <div>Welcome Razi</div>
+    }
+```
