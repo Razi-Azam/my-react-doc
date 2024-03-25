@@ -15,6 +15,8 @@ Special Credit: [Codevolution](https://youtu.be/QFaFIcGhPoM?si=eqV1RlPn3DNjwfPN)
 
 [4. Event Handling](#event-handling)
 
+[5. Conditional Rendering](#conditional-rendering)
+
 
 
 
@@ -726,4 +728,41 @@ function ChildComponent(props) {
         </div>
     );
 }
+```
+
+---
+
+## Conditional Rendering
+[Go to Top](#topics)
+
+The following approaches can be used for conditional rendering:
+- If/else
+- Element variables
+- Ternary Conditional Operator
+- Short Circuit Operator
+
+### [1] If/else Approach:
+```javascript
+import React, { Component } from 'react'
+
+class UserGreeting extends Component {
+
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            isLoggedIn: false
+        }
+    }
+
+    render() {
+        if(this.state.isLoggedIn) {
+            return <div>Welcome Razi</div>
+        } else {
+            return <div>Welcome Guest</div>
+        }
+    }
+}
+
+export default UserGreeting
 ```
