@@ -767,6 +767,7 @@ class UserGreeting extends Component {
 export default UserGreeting
 ```
 ### [2] Element variables Approach:
+
 ```javascript
 import React, { Component } from 'react'
 
@@ -796,12 +797,15 @@ class UserGreeting extends Component {
 export default UserGreeting
 
 ```
+
+
 #### 🐞Demerits of the above two approaches are:
 - Cannot be used under JSX.
 - Code repetition.
 
 
 ### [3] Ternary Conditional Operator Approach:
+
 ```javascript
     render() {
         return this.state.isLoggedIn ? 
