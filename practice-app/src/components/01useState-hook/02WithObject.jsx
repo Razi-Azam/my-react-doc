@@ -22,6 +22,7 @@ function WithObject() {
         />
         <h2 className='text-gray-950 my-2 text-xl'>Your firs name is: {name.firstName}</h2>
         <h2 className='text-gray-950 text-xl'>Your last name is: {name.lastName}</h2>
+        <h2 className='text-gray-950 text-xl my-2'>{JSON.stringify(name)}</h2>
     </form>
   )
 }
