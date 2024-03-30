@@ -17,7 +17,7 @@ Special Credit: [Codevolution](https://youtu.be/QFaFIcGhPoM?si=eqV1RlPn3DNjwfPN)
 
 [5. Conditional Rendering](#conditional-rendering)
 
-
+[6. Lists and Keys](#lists-and-keys)
 
 
 ##  React Elements and Components 
@@ -824,3 +824,111 @@ export default UserGreeting
         return this.state.isLoggedIn && <div>Welcome Razi</div>
     }
 ```
+
+---
+
+## lists-and-keys
+[Go to Top](#topics)
+
+The map function is used for iterating over the array by calling the given function on each item and returns a new transformed array.
+
+```javascript
+import React from 'react'
+
+function NumList() {
+    const names = ['Ghazal','Homa','Sumbul']
+    const nameList = names.map(name => <h2>{name}</h2>)
+    return (
+        <div>
+            {nameList}
+        </div>
+    )
+}
+
+export default NumList
+
+```
+
+#### Output:
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/f6ddbec8-7121-42d1-b204-f12100459184)
+
+### Separation of Concern:
+- (It states that logic that performs different actions should not be grouped or combined together)
+- Keep the JSX in a separate file as Person.js and call the Person component in the NumList component by passing the person as props.
+- The NumList component only responsible for rendering the list.
+- The Person component is only responsible for rendering the person HTML.
+
+#### NumList.js
+```javascript
+import React from 'react'
+import Person from './Person'
+
+function NumList() {
+    const persons = [
+        {
+            id: 1,
+            name: 'Jhon',
+            age: 30,
+            skill: 'Angular'
+        },
+        {
+            id: 2,
+            name: 'Maria',
+            age: 20,
+            skill: 'PHP'
+        },
+        {
+            id: 3,
+            name: 'Pat',
+            age: 23,
+            skill: 'React'
+        },
+        {
+            id: 4,
+            name: 'Cindy',
+            age: 27,
+            skill: 'React'
+        },
+    ]
+
+    const personList = persons.map(person => <Person person={person} />)
+    return (
+        <div>
+            {personList}
+        </div>
+    )
+}
+
+export default NumList
+
+```
+
+#### Person.js
+```javascript
+import React from 'react'
+
+function Person({person}) {
+
+    return (
+        <div>
+            <h2>
+                I am {person.name}. 
+                I am {person.age} years old. 
+                I know {person.skill}.
+            </h2>
+        </div>
+    )
+}
+
+export default Person
+
+```
+
+#### Output:
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/2d94b2cf-a706-47d1-b70f-39314019aaee)
+
+### Keys and Lists:
+- The keys cannot be passed as props and rendered in the HTML.
+- The keys are reserved for React which helps in uniquely identifying each key.
+- The keys help React which List is removed or changed and play a crucial role in handling the UI updates efficiently.
+
