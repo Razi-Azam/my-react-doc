@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-      {/* useEffect Hook afer render*/}
+      {/* useEffect Hook afer render.*/}
       <UseEffectAfterRender />
       {/* 02 useState with Arrays
       <WithArray /> */}
