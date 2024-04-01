@@ -10,7 +10,7 @@ function App() {
 
   return (
     <>
-      {/* useEffect Hook afer render. */}
+      {/* useEffect Hook with condition. */}
       <WithCondition />
 
       {/* useEffect Hook afer render.
