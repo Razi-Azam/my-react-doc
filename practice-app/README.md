@@ -39,58 +39,104 @@
 [2. useEffect Hook](#hooks)
 
 <details>
+  <summary>useEffect hook with cleanup function</summary>
+
+  ```javascript
+      /* this demonstrate the useEffect hook should runs only once */
+      import React, { useEffect, useState } from 'react'
+      
+      function EffectOnlyOnce() {
+          const [mousePos, setMousePos] = useState({
+              x: 0,
+              y: 0
+          })
+      
+        const logMousePosition = (e) => {
+          console.log("Mouse event")
+          setMousePos({
+              x: e.clientX,
+              y: e.clientY
+          })
+        }
+      
+        useEffect(() => {
+          console.log("useEffect called")
+          window.addEventListener('mousemove', logMousePosition)
+      
+          //cleanup function to cancel all events or subscriptions
+          return () => {
+              console.log('component unmounted')
+              window.removeEventListener('mousemove', logMousePosition)
+          }
+      
+        }, []) //pass an empty array as dependency to tell useeffect not to re-render everytime
+      
+        return (
+          <div className='text-4xl text-lime-950 bg-slate-100 p-10'>
+              <h1>Hooks: X - {mousePos.x} Y - {mousePos.y} </h1>
+          </div>
+        )
+      }
+      
+      export default EffectOnlyOnce
+      
+```
+
+</details>
+
+<details>
   <summary>Fetching Data using useEffect Hook</summary>
-    <h3>useState with previous state</h3>
+    <h3></h3>
     <img src="https://github.com/Razi-Azam/my-react-doc/assets/106505820/84d815b1-2709-4ef8-a361-60794a45a344" width="350" height="100" />
   
-    ```javascript
-        import React, { useEffect, useState } from 'react'
-        import axios from 'axios'
-        
-        function  FecthData() {
-            const [post, setPost] = useState([])
-            const [id, setId] = useState(1)
-            const [idFromButtonClick, setIdFromButtonClick] = useState(1)
-        
-            useEffect(() => {
-                axios.get(`https://jsonplaceholder.typicode.com/posts/${idFromButtonClick}`)
-                .then(res => {
-                    console.log(res)
-                    setPost(res.data)
-                })
-                .catch(err => {
-                    console.log(err)
-                })
-            }, [idFromButtonClick])
-        
-            const handleClick = () => {
-                setIdFromButtonClick(id)
-            }
-        
-          return (
-            <div>
-                {/* Fetch data on the basis of user input and on button click
-                    When the button is clicked, the handleclick event set the id from 
-                    the input field to the idFromButtonClick which helps in fetching the desired data
-                */}
-                <input 
-                    type="text"
-                    className='border border-gray-950 bg-slate-200 text-gray-950 w-auto px-4 mx-2'
-                    value={id}
-                    onChange={(e) => setId(e.target.value)} 
-                />
-                <button 
-                    className='border border-gray-950 bg-slate-500 text-white w-30 px-2'
-                    onClick={handleClick}>Fetch Post
-                </button>
-                <h2 
-                    className='text-gray-950 my-2 text-xl'>Title - {post.title}
-                </h2>
-        
-            </div>
-          )
-        }
-        
-        export default FecthData
-    ```
+  ```javascript
+      import React, { useEffect, useState } from 'react'
+      import axios from 'axios'
+      
+      function  FecthData() {
+          const [post, setPost] = useState([])
+          const [id, setId] = useState(1)
+          const [idFromButtonClick, setIdFromButtonClick] = useState(1)
+      
+          useEffect(() => {
+              axios.get(`https://jsonplaceholder.typicode.com/posts/${idFromButtonClick}`)
+              .then(res => {
+                  console.log(res)
+                  setPost(res.data)
+              })
+              .catch(err => {
+                  console.log(err)
+              })
+          }, [idFromButtonClick])
+      
+          const handleClick = () => {
+              setIdFromButtonClick(id)
+          }
+      
+        return (
+          <div>
+              {/* Fetch data on the basis of user input and on button click
+                  When the button is clicked, the handleclick event set the id from 
+                  the input field to the idFromButtonClick which helps in fetching the desired data
+              */}
+              <input 
+                  type="text"
+                  className='border border-gray-950 bg-slate-200 text-gray-950 w-auto px-4 mx-2'
+                  value={id}
+                  onChange={(e) => setId(e.target.value)} 
+              />
+              <button 
+                  className='border border-gray-950 bg-slate-500 text-white w-30 px-2'
+                  onClick={handleClick}>Fetch Post
+              </button>
+              <h2 
+                  className='text-gray-950 my-2 text-xl'>Title - {post.title}
+              </h2>
+      
+          </div>
+        )
+      }
+      
+      export default FecthData
+  ```
 </details>
