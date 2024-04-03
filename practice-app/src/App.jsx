@@ -7,6 +7,7 @@ import WithCondition from './components/02useEffect-hook/02withCondition';
 import EffectOnlyOnce from './components/02useEffect-hook/03EffectOnlyOnce';
 import MouseContainer from './components/02useEffect-hook/04MouseContainer';
 import IntervalCounter from './components/02useEffect-hook/05IntervalCounter';
+import FecthData from './components/02useEffect-hook/06FecthData';
 
 
 
@@ -14,8 +15,11 @@ function App() {
 
   return (
     <>
-      {/* useEffect Hook incorrect dependency. */}
-      <IntervalCounter />
+      {/* useEffect Hook to fetch Data. */}
+      <FecthData />
+
+      {/* useEffect Hook incorrect dependency. 
+      <IntervalCounter /> */}
 
       {/* useEffect Hook with cleanup function 
       <MouseContainer /> */}
