@@ -19,6 +19,8 @@ Special Credit: [Codevolution](https://youtu.be/QFaFIcGhPoM?si=eqV1RlPn3DNjwfPN)
 
 [6. Lists and Keys](#lists-and-keys)
 
+[7. Styling and CSS Basics](#styling-and-css-basics)
+
 
 ##  React Elements and Components 
 [Go to Top](#topics)
@@ -932,3 +934,62 @@ export default Person
 - The keys are reserved for React which helps in uniquely identifying each key.
 - The keys help React which List is removed or changed and play a crucial role in handling the UI updates efficiently.
 
+```javascript
+const personList = 
+        persons.map(person => <Person key={person.name} person={person} />)
+    return (
+        <div>
+            {personList}
+        </div>
+    )
+
+```
+
+ #### 🤔 So why do we need keys?
+- In the following case, when we update the list by inserting a new item, React starts matching the current List Tree with the actual tree.
+- It matches one by one and as long as it finds the third item which is completely new then it updates the actual tree by adding the third list item.
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/520a65f2-c104-4e68-afa5-276b4292c85e)
+
+#### ❓ So, what’s the issue?
+- Well, in case, if we insert a new item in the beginning of the list then React starts comparing the two list tree items and finds that each item is different (unmatched). React will keep on mutating every child which leads to inefficiency.
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/bf939ea8-aa97-4b2d-b131-b5f51b89f1be)
+
+#### ✅ That’s why to solve the above issue, React supports the key attribute.
+- So, in presence of keys, react simply matches the two trees’ items using keys. Here, React can identify that the list item with key 3 is new and the items with key 1 and 2 are same. So It inserts the new item at the top of the list.
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/60713a8b-e726-429c-8ba1-7eedb029faeb)
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/ab4dcc49-7cf7-412d-9ffc-3206cb6b3a9f)
+
+### Index as a key:
+- So if there is an array of names which needs to be displayed in a list but the Id is not here so we can use index as a key.
+```javascript
+const names = ['Ghazal','Homa','Sumbul']
+    const nameList = names.map((name, index) => <h2 key={index}>{name}</h2>)
+
+    return (
+        <div>
+            {nameList}
+        </div>
+    )
+```
+
+#### ❌ Issues with Index when it is used as a key:
+- It could impact the performance and can lead to some unstable component behaviour.
+- For example, in the following case, the ID and the Item is sorted by Earliest.
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/897e4c2f-136e-4683-805a-1d732f4eeb17)
+- But when the button named “Sort by latest” is clicked, the Item is not matched with the sorted timestamp (Created at). Only the timestamp is sorted and Item list is unaffected.
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/1fd7576b-c5ec-47bb-bad4-ac17d3c1bfc3)
+
+#### 🤔 So, when to use Index as a key? 
+- The items in your list do not have a unique id.
+- The list is static and will not change (no insertion or deletion is performed).
+- The list will never be reordered or filtered.
+
+#### ✅ It is recommended to use if unique id is not present instead of using index as a key:
+- Generate unique id using one of the npm packages.
+- Or hashing out a unique value from the existing properties.
+
+
+---
+
+## Styling and CSS Basics
+[Go to Top](#topics)
