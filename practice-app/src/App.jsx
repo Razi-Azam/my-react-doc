@@ -1,3 +1,4 @@
+import React from 'react'
 import './App.css'
 import WithPrevState from './components/01useState-hook/01WithPrevState'
 import WithObject from './components/01useState-hook/02WithObject'
@@ -8,15 +9,24 @@ import EffectOnlyOnce from './components/02useEffect-hook/03EffectOnlyOnce';
 import MouseContainer from './components/02useEffect-hook/04MouseContainer';
 import IntervalCounter from './components/02useEffect-hook/05IntervalCounter';
 import FecthData from './components/02useEffect-hook/06FecthData';
+import UseContext from './components/03useContext-hook/01UseContext';
 
-
+//create a context
+export const UserContext = React.createContext();
 
 function App() {
 
   return (
     <>
-      {/* useEffect Hook to fetch Data. */}
-      <FecthData />
+      {/* useContext Hook part-2. */}
+
+      {/* useContext Hook part-1 */}
+      <UserContext.Provider value={"Razi"}>
+        <UseContext />
+      </UserContext.Provider>
+
+      {/* useEffect Hook to fetch Data. 
+      <FecthData /> */}
 
       {/* useEffect Hook incorrect dependency. 
       <IntervalCounter /> */}
