@@ -10,20 +10,28 @@ import MouseContainer from './components/02useEffect-hook/04MouseContainer';
 import IntervalCounter from './components/02useEffect-hook/05IntervalCounter';
 import FecthData from './components/02useEffect-hook/06FecthData';
 import UseContext from './components/03useContext-hook/01UseContext';
+import UseContextOptimized from './components/03useContext-hook/02UseContextOptimized'
 
 //create a context
 export const UserContext = React.createContext();
+//create another context
+export const ChannelContext = React.createContext();
 
 function App() {
 
   return (
     <>
       {/* useContext Hook part-2. */}
+      <UserContext.Provider value={"Razi Azam"}>
+        <ChannelContext.Provider value={"Mehfil E Razi"}>
+          <UseContextOptimized />
+        </ChannelContext.Provider>
+      </UserContext.Provider>
 
-      {/* useContext Hook part-1 */}
+      {/* useContext Hook part-1 
       <UserContext.Provider value={"Razi"}>
         <UseContext />
-      </UserContext.Provider>
+      </UserContext.Provider> */}
 
       {/* useEffect Hook to fetch Data. 
       <FecthData /> */}
