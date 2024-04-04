@@ -140,3 +140,95 @@
       export default FecthData
   ```
 </details>
+
+[3. useContext Hook](#hooks)
+<details>
+  <summary>useContext Hook with multiple contexts</summary>
+  <h3></h3>
+  <img src="https://github.com/Razi-Azam/my-react-doc/assets/106505820/7f2c526d-3870-4d6d-b1bf-a25fcb00c54b" width="350" height="100" />
+
+  <h3>App.js - Create Contexts and provide the values using Provider</h3>
+
+  ```javascript
+
+      //create a context
+      export const UserContext = React.createContext();
+      //create another context
+      export const ChannelContext = React.createContext();
+      
+      function App() {
+      
+      return (
+      <>
+        {/* useContext Hook part-2. */}
+        <UserContext.Provider value={"Razi Azam"}>
+          <ChannelContext.Provider value={"Mehfil E Razi"}>
+            <UseContextOptimized />
+          </ChannelContext.Provider>
+        </UserContext.Provider>
+      </>
+      )
+
+  ```
+
+  <h3>UseContextOptimized.jsx - Contain the child component C</h3>
+    
+  ```javascript
+
+    import React from 'react'
+    import CompC from './child-components/CompC'
+    
+    function UseContextOptimized() {
+      return (
+        <div>
+            <CompC />
+        </div>
+      )
+    }
+    
+    export default UseContextOptimized
+
+  ```
+
+  <h3>CompC.jsx - Contain the child component D</h3>
+    
+  ```javascript
+
+    import React from 'react'
+    import CompD from './CompD'
+    
+    function CompC() {
+      return (
+        <div>
+            <CompD />
+        </div>
+      )
+    }
+    
+    export default CompC
+
+  ```
+
+  <h3>CompD.jsx - use the Contexts created in App.js</h3>
+    
+  ```javascript
+    import React, {useContext} from 'react'
+    import { ChannelContext, UserContext } from '../../../App'
+    
+    function CompD() {
+        const userName = useContext(UserContext)
+        const channelName = useContext(ChannelContext)
+    
+      return (
+        <div className='text-gray-950 text-3xl bg-slate-300 w-auto h-auto h-20 p-5'>
+            <h1>User Name: {userName}</h1>
+            <h1 className='mt-2'>Channel Name: {channelName}</h1>
+        </div>
+      )
+    }
+    
+    export default CompD
+
+  ```
+  
+</details>
