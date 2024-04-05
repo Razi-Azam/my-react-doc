@@ -12,6 +12,7 @@ import FecthData from './components/02useEffect-hook/06FecthData';
 import UseContext from './components/03useContext-hook/01UseContext';
 import UseContextOptimized from './components/03useContext-hook/02UseContextOptimized'
 import CounterOne from './components/04useReducer-hook/01CounterOne'
+import CounterTwo from './components/04useReducer-hook/02CounterTwo'
 
 //create a context
 export const UserContext = React.createContext();
@@ -22,10 +23,11 @@ function App() {
 
   return (
     <>
-      {/* this is comment section */}
+      {/* useReducer Hook using complex state and action  */}
+      <CounterTwo />
 
-      {/* useReducer Hook using simple state and action  */}
-      <CounterOne />
+      {/* useReducer Hook using simple state and action  
+      <CounterOne /> */}
 
       {/* useContext Hook part-2. 
       <UserContext.Provider value={"Razi Azam"}>
