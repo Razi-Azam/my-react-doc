@@ -11,6 +11,7 @@ import IntervalCounter from './components/02useEffect-hook/05IntervalCounter';
 import FecthData from './components/02useEffect-hook/06FecthData';
 import UseContext from './components/03useContext-hook/01UseContext';
 import UseContextOptimized from './components/03useContext-hook/02UseContextOptimized'
+import CounterOne from './components/04useReducer-hook/01CounterOne'
 
 //create a context
 export const UserContext = React.createContext();
@@ -21,12 +22,17 @@ function App() {
 
   return (
     <>
-      {/* useContext Hook part-2. */}
+      {/* this is comment section */}
+
+      {/* useReducer Hook using simple state and action  */}
+      <CounterOne />
+
+      {/* useContext Hook part-2. 
       <UserContext.Provider value={"Razi Azam"}>
         <ChannelContext.Provider value={"Mehfil E Razi"}>
           <UseContextOptimized />
         </ChannelContext.Provider>
-      </UserContext.Provider>
+      </UserContext.Provider> */}
 
       {/* useContext Hook part-1 
       <UserContext.Provider value={"Razi"}>
