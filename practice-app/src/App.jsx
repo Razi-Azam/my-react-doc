@@ -13,6 +13,7 @@ import UseContext from './components/03useContext-hook/01UseContext';
 import UseContextOptimized from './components/03useContext-hook/02UseContextOptimized'
 import CounterOne from './components/04useReducer-hook/01CounterOne'
 import CounterTwo from './components/04useReducer-hook/02CounterTwo'
+import MultipleReducers from './components/04useReducer-hook/03MultipleReducers'
 
 //create a context
 export const UserContext = React.createContext();
@@ -23,8 +24,12 @@ function App() {
 
   return (
     <>
-      {/* useReducer Hook using complex state and action  */}
-      <CounterTwo />
+
+      {/*  Multiple reducers  */}
+      <MultipleReducers />
+
+      {/* useReducer Hook using complex state and action 
+      <CounterTwo />  */}
 
       {/* useReducer Hook using simple state and action  
       <CounterOne /> */}
