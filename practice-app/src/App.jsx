@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useReducer } from 'react'
 import './App.css'
 import WithPrevState from './components/01useState-hook/01WithPrevState'
 import WithObject from './components/01useState-hook/02WithObject'
@@ -14,19 +14,49 @@ import UseContextOptimized from './components/03useContext-hook/02UseContextOpti
 import CounterOne from './components/04useReducer-hook/01CounterOne'
 import CounterTwo from './components/04useReducer-hook/02CounterTwo'
 import MultipleReducers from './components/04useReducer-hook/03MultipleReducers'
+import CompA from './components/04useReducer-hook/Child-Components/CompA'
+import CompB from './components/04useReducer-hook/Child-Components/CompB'
+import CompC from './components/04useReducer-hook/Child-Components/CompC'
 
 //create a context
 export const UserContext = React.createContext();
 //create another context
 export const ChannelContext = React.createContext();
 
+//create a reducer function
+const initialState = 0
+const reducer = (state, action) => {
+    switch(action) {
+        case 'increment':
+            return state + 1
+        case 'decrement':
+            return state - 1
+        case 'reset':
+            return initialState
+        default:
+            state
+    }
+}
+
+//create a context
+export const CountContext = React.createContext()
+
 function App() {
+  const [count, dispatch] = useReducer(reducer, initialState)
 
   return (
     <>
+  
+      {/*  useReducer with useContext hook  */}
+      <h1>App Counter: {count}</h1>
+      <CountContext.Provider value={{countState: count, countDispatch: dispatch}}>
+        <CompA />
+        <CompB />
+        <CompC />
+      </CountContext.Provider>
 
-      {/*  Multiple reducers  */}
-      <MultipleReducers />
+      {/*  Multiple reducers  
+      <MultipleReducers /> */}
 
       {/* useReducer Hook using complex state and action 
       <CounterTwo />  */}
