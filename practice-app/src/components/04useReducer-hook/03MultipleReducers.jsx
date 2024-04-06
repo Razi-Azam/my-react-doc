@@ -1,3 +1,7 @@
+/* It is used when we have to deal with multiple useReducers 
+   having same state transitions. In this case same reducer function 
+   can be used by multiple usereducers */
+
 import React, {useReducer} from 'react'
 
 const initialState = 0
@@ -17,6 +21,7 @@ const reducer = (state, action) => {
 function MultipleReducers() {
 
     const [count, dispatch] = useReducer(reducer, initialState)
+    const [countTwo, dispatchTwo] = useReducer(reducer, initialState)
 
   return (
     <div>
@@ -36,6 +41,25 @@ function MultipleReducers() {
             onClick={() => dispatch('reset')}
         >Reset
         </button>
+
+        <div>
+            <h1 className='text-3xl text-gray-950 font-bold mb-4'>Count - {countTwo}</h1>
+            <button 
+                className='border border-gray-950 bg-slate-500 text-white w-auto px-4'
+                onClick={() => dispatchTwo('increment')}
+            >Increment
+            </button>
+            <button 
+                className='border border-gray-950 bg-slate-500 text-white w-auto px-2 mx-2'
+                onClick={() => dispatchTwo('decrement')}
+            >Decrement
+            </button>
+            <button 
+                className='border border-gray-950 bg-slate-500 text-white w-20 px-2'
+                onClick={() => dispatchTwo('reset')}
+            >Reset
+            </button>
+        </div>
     </div>
   )
 }
