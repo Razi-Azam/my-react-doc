@@ -18,6 +18,7 @@ import CompA from './components/04useReducer-hook/Child-Components/CompA'
 import CompB from './components/04useReducer-hook/Child-Components/CompB'
 import CompC from './components/04useReducer-hook/Child-Components/CompC'
 import FetchData from './components/01useState-hook/04FetchData'
+import DataFetchTwo from './components/04useReducer-hook/04DataFetchTwo'
 
 //create a context
 export const UserContext = React.createContext();
@@ -49,9 +50,10 @@ function App() {
     <>
 
       {/*  Data Fetching with useReducer  */}
+      <DataFetchTwo />
 
-      {/*  Data Fetching with useState  */}
-      <FetchData />
+      {/*  Data Fetching with useState 
+      <FetchData />  */}
 
       {/*  useReducer with useContext hook 
       <h1>App Counter: {count}</h1>
