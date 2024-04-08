@@ -20,6 +20,7 @@ import CompC from './components/04useReducer-hook/Child-Components/CompC'
 import FetchData from './components/01useState-hook/04FetchData'
 import DataFetchTwo from './components/04useReducer-hook/04DataFetchTwo'
 import ParentComponent from './components/05useCallback-hook/ParentComponent'
+import Counter from './components/06useMemo-hook/Counter'
 
 //create a context
 export const UserContext = React.createContext();
@@ -50,8 +51,11 @@ function App() {
   return (
     <>
 
-      {/*  useCallback Hook  */}
-      <ParentComponent />
+      {/*  useMemo Hook  */}
+      <Counter />
+
+      {/*  useCallback Hook  
+      <ParentComponent /> */}
 
       {/*  Data Fetching with useReducer 
       <DataFetchTwo />  */}
