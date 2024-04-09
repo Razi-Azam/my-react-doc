@@ -21,6 +21,7 @@ import FetchData from './components/01useState-hook/04FetchData'
 import DataFetchTwo from './components/04useReducer-hook/04DataFetchTwo'
 import ParentComponent from './components/05useCallback-hook/ParentComponent'
 import Counter from './components/06useMemo-hook/Counter'
+import FocusINput from './components/07useRef-hook/01FocusINput'
 
 //create a context
 export const UserContext = React.createContext();
@@ -51,8 +52,11 @@ function App() {
   return (
     <>
 
-      {/*  useMemo Hook  */}
-      <Counter />
+      {/*  useRef Hook  */}
+      <FocusINput />
+
+      {/*  useMemo Hook  
+      <Counter /> */}
 
       {/*  useCallback Hook  
       <ParentComponent /> */}
