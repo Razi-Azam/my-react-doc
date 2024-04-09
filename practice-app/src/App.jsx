@@ -22,6 +22,8 @@ import DataFetchTwo from './components/04useReducer-hook/04DataFetchTwo'
 import ParentComponent from './components/05useCallback-hook/ParentComponent'
 import Counter from './components/06useMemo-hook/Counter'
 import FocusINput from './components/07useRef-hook/01FocusINput'
+import ClassTimer from './components/07useRef-hook/02ClassTimer'
+import HookTimer from './components/07useRef-hook/03HookTimer'
 
 //create a context
 export const UserContext = React.createContext();
@@ -52,8 +54,12 @@ function App() {
   return (
     <>
 
-      {/*  useRef Hook  */}
-      <FocusINput />
+      {/*  useRef Hook  example 2 */}
+      <ClassTimer />
+      <HookTimer /> 
+
+      {/*  useRef Hook  example 1
+      <FocusINput /> */}
 
       {/*  useMemo Hook  
       <Counter /> */}
