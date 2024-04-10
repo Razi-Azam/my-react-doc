@@ -25,6 +25,7 @@ import FocusINput from './components/07useRef-hook/01FocusINput'
 import ClassTimer from './components/07useRef-hook/02ClassTimer'
 import HookTimer from './components/07useRef-hook/03HookTimer'
 import DocTitleOne from './components/08custom-hook/DocTitleOne'
+import DocTitleTwo from './components/08custom-hook/DocTitleTwo'
 
 //create a context
 export const UserContext = React.createContext();
@@ -57,6 +58,7 @@ function App() {
 
       {/*  Custom Hook  example 1 */}
       <DocTitleOne /> 
+      <DocTitleTwo />
 
       {/*  useRef Hook  example 2 
       <ClassTimer />

@@ -3,13 +3,14 @@ import Button from '../ui-comps/Button'
 import useDocumentTitle from './01myHooks/useDocumentTitle'
 
 
-function DocTitleOne() {
+function DocTitleTwo() {
     const [count, setCount] = useState(0)
 
     // useEffect(() => {
     //     document.title = `Count ${count}`
     // }, [count])
 
+    //custom hook
     useDocumentTitle(count)
 
   return (
@@ -19,4 +20,4 @@ function DocTitleOne() {
   )
 }
 
-export default DocTitleOne
+export default DocTitleTwo
