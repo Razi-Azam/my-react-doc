@@ -24,6 +24,7 @@ import Counter from './components/06useMemo-hook/Counter'
 import FocusINput from './components/07useRef-hook/01FocusINput'
 import ClassTimer from './components/07useRef-hook/02ClassTimer'
 import HookTimer from './components/07useRef-hook/03HookTimer'
+import DocTitleOne from './components/08custom-hook/DocTitleOne'
 
 //create a context
 export const UserContext = React.createContext();
@@ -54,9 +55,12 @@ function App() {
   return (
     <>
 
-      {/*  useRef Hook  example 2 */}
+      {/*  Custom Hook  example 1 */}
+      <DocTitleOne /> 
+
+      {/*  useRef Hook  example 2 
       <ClassTimer />
-      <HookTimer /> 
+      <HookTimer />  */}
 
       {/*  useRef Hook  example 1
       <FocusINput /> */}
