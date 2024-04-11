@@ -11,8 +11,8 @@ import IntervalCounter from './components/02useEffect-hook/05IntervalCounter';
 import FecthData from './components/02useEffect-hook/06FecthData';
 import UseContext from './components/03useContext-hook/01UseContext';
 import UseContextOptimized from './components/03useContext-hook/02UseContextOptimized'
-import CounterOne from './components/04useReducer-hook/01CounterOne'
-import CounterTwo from './components/04useReducer-hook/02CounterTwo'
+// import CounterOne from './components/04useReducer-hook/01CounterOne' 
+// import CounterTwo from './components/04useReducer-hook/02CounterTwo'
 import MultipleReducers from './components/04useReducer-hook/03MultipleReducers'
 import CompA from './components/04useReducer-hook/Child-Components/CompA'
 import CompB from './components/04useReducer-hook/Child-Components/CompB'
@@ -26,6 +26,9 @@ import ClassTimer from './components/07useRef-hook/02ClassTimer'
 import HookTimer from './components/07useRef-hook/03HookTimer'
 import DocTitleOne from './components/08custom-hook/DocTitleOne'
 import DocTitleTwo from './components/08custom-hook/DocTitleTwo'
+import CounterOne from './components/08custom-hook/CounterOne';
+import CounterTwo from './components/08custom-hook/CounterTwo';
+
 
 //create a context
 export const UserContext = React.createContext();
@@ -55,10 +58,13 @@ function App() {
 
   return (
     <>
+      {/*  Custom Hook  example 2 */}
+      <CounterOne />
+      <CounterTwo />
 
-      {/*  Custom Hook  example 1 */}
+      {/*  Custom Hook  example 1 
       <DocTitleOne /> 
-      <DocTitleTwo />
+      <DocTitleTwo /> */}
 
       {/*  useRef Hook  example 2 
       <ClassTimer />
