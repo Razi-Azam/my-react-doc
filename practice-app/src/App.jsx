@@ -28,6 +28,7 @@ import DocTitleOne from './components/08custom-hook/DocTitleOne'
 import DocTitleTwo from './components/08custom-hook/DocTitleTwo'
 import CounterOne from './components/08custom-hook/CounterOne';
 import CounterTwo from './components/08custom-hook/CounterTwo';
+import UserForm from './components/08custom-hook/UserForm'
 
 
 //create a context
@@ -58,9 +59,13 @@ function App() {
 
   return (
     <>
-      {/*  Custom Hook  example 2 */}
+
+      {/*  Custom Hook  example 3 */}
+      <UserForm />
+
+      {/*  Custom Hook  example 2 
       <CounterOne />
-      <CounterTwo />
+      <CounterTwo /> */}
 
       {/*  Custom Hook  example 1 
       <DocTitleOne /> 
