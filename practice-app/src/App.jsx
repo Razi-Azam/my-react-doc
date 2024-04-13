@@ -60,8 +60,11 @@ function App() {
   return (
     <>
 
-      {/*  Custom Hook  example 3 */}
-      <UserForm />
+      {/*  React-Redux Cake Shop App */}
+      
+
+      {/*  Custom Hook  example 3 
+      <UserForm /> */}
 
       {/*  Custom Hook  example 2 
       <CounterOne />
