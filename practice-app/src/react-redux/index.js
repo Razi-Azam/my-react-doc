@@ -2,6 +2,7 @@
 //an action is an object with a type property
 
 const BUY_CAKE = 'BUY_CAKE'
+const BUY_ICECREAM = 'BUY_ICECREAM'
 
 function buyCake() {
     return {
@@ -10,11 +11,19 @@ function buyCake() {
     }
 }
 
+function buyIceCream() {
+    return {
+        type: BUY_ICECREAM,
+        info: 'Second redux action'
+    }
+}
+
 //Reducer:
 //(previousState, action) => newState
 
 const initialState = {
-    numOfCakes: 10
+    numOfCakes: 10,
+    numOfIceCreams: 20,
 }
 
 /* =============================== REDUCER ==================================== */
@@ -31,6 +40,12 @@ const reducer = (state = initialState, action) => {
                 //make change in the specifc property
                 ...state, //make a copy of the state object and then only update the number of cakes
                 numOfCakes: state.numOfCakes - 1 //not mutating the object but return a new object
+            }
+
+            case BUY_ICECREAM: 
+            return {
+                ...state, 
+                numOfIcecreams: state.numOfIceCreams - 1
             }
 
         default:
@@ -52,7 +67,7 @@ const store = createStore(reducer)
 import { configureStore } from '@reduxjs/toolkit';
 
 const store = configureStore({
-    reducer: reducer,
+    reducer: reducer, //or just reducer
 });
 
 
@@ -66,6 +81,10 @@ const unsubscribe = store.subscribe(() => console.log('Updated state ', store.ge
 store.dispatch(buyCake())
 store.dispatch(buyCake())
 store.dispatch(buyCake())
+
+store.dispatch(buyIceCream())
+store.dispatch(buyIceCream())
+
 
 //Responsibility 4: Unsubscribe from the store
 unsubscribe()
