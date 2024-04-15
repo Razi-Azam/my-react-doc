@@ -1,3 +1,10 @@
+//New way of creating a store
+import { configureStore } from '@reduxjs/toolkit';
+//for multiple reducers
+import { combineReducers } from '@reduxjs/toolkit'
+
+
+
 /* =============================== ACTION ==================================== */
 //an action is an object with a type property
 
@@ -21,9 +28,19 @@ function buyIceCream() {
 //Reducer:
 //(previousState, action) => newState
 
-const initialState = {
-    numOfCakes: 10,
-    numOfIceCreams: 20,
+// const initialState = {
+//     numOfCakes: 10,
+//     numOfIceCreams: 20,
+// }
+
+//create a separate state for cakes
+const initialCakeState = {
+    numOfCakes: 10
+}
+
+//create a separate state for ice creams
+const initialIceCreamState = {
+    numOfIceCreams: 20
 }
 
 /* =============================== REDUCER ==================================== */
@@ -31,21 +48,49 @@ const initialState = {
 //reducer function to update the state
 //It is a pure function that accepts state and action as arguments and returns 
 //the next state of an application
-const reducer = (state = initialState, action) => {
+// const reducer = (state = initialState, action) => {
+//     switch(action.type) {
+//         case BUY_CAKE: 
+//             return {
+//                 //here, the obejct may contain more than one properties,
+//                 //so first make a copy of the object by using spread operator and then
+//                 //make change in the specifc property
+//                 ...state, //make a copy of the state object and then only update the number of cakes
+//                 numOfCakes: state.numOfCakes - 1 //not mutating the object but return a new object
+//             }
+
+//             case BUY_ICECREAM: 
+//             return {
+//                 ...state, 
+//                 numOfIcecreams: state.numOfIceCreams - 1
+//             }
+
+//         default:
+//             return state
+//     }
+// }
+
+//Now, creating a separate reducer for cakes
+const cakeRedcuer = (state = initialCakeState, action) => {
     switch(action.type) {
         case BUY_CAKE: 
             return {
-                //here, the obejct may contain more than one properties,
-                //so first make a copy of the object by using spread operator and then
-                //make change in the specifc property
-                ...state, //make a copy of the state object and then only update the number of cakes
-                numOfCakes: state.numOfCakes - 1 //not mutating the object but return a new object
+                ...state,
+                numOfCakes: state.numOfCakes - 1
             }
 
-            case BUY_ICECREAM: 
+        default:
+            return state
+    }
+}
+
+//creating a separate reducer for icecreams
+const iceCreamReducer = (state = initialIceCreamState, action) => {
+    switch(action.type) {
+        case BUY_ICECREAM: 
             return {
-                ...state, 
-                numOfIcecreams: state.numOfIceCreams - 1
+                ...state,
+                numOfIceCreams: state.numOfIceCreams - 1
             }
 
         default:
@@ -54,6 +99,8 @@ const reducer = (state = initialState, action) => {
 }
 
 /* =============================== STORE ==================================== */
+
+
 //Responsibility 1: Holding the application state
 /* @deprecated 
 since createSTore is deprecated so it is recommended to import using alias
@@ -63,14 +110,18 @@ const store = createStore(reducer)
 
  */
 
-//New way of creating a store
-import { configureStore } from '@reduxjs/toolkit';
+const rootReducer = combineReducers({
+    cake: cakeRedcuer,
+    iceCream: iceCreamReducer
+})
 
+
+//passed 'rootReducer'a s value to the reducer
 const store = configureStore({
-    reducer: reducer, //or just reducer
+    reducer: rootReducer,
 });
 
-
+   
 //Responsibility 2: Allows acces to state via getState()
 console.log('Initial state', store.getState())
 
