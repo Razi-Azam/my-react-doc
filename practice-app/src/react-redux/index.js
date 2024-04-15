@@ -1,7 +1,11 @@
 //New way of creating a store
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore  } from '@reduxjs/toolkit'
 //for multiple reducers
 import { combineReducers } from '@reduxjs/toolkit'
+//import middleware
+import { applyMiddleware } from 'redux'
+//import redux logger
+import logger from 'redux-logger'; 
 
 
 
@@ -105,6 +109,7 @@ const iceCreamReducer = (state = initialIceCreamState, action) => {
 /* @deprecated 
 since createSTore is deprecated so it is recommended to import using alias
 import { legacy_createStore as createStore } from 'redux';
+import { logger } from 'redux-logger';
 
 const store = createStore(reducer)
 
@@ -115,10 +120,13 @@ const rootReducer = combineReducers({
     iceCream: iceCreamReducer
 })
 
+//create a middleware and pass the logger
+const middleWare = applyMiddleware(logger);
 
 //passed 'rootReducer'a s value to the reducer
 const store = configureStore({
     reducer: rootReducer,
+    middleWare,
 });
 
    
@@ -126,7 +134,10 @@ const store = configureStore({
 console.log('Initial state', store.getState())
 
 //Responsibility 2: Allows the app to subscribe the changes in the store
-const unsubscribe = store.subscribe(() => console.log('Updated state ', store.getState()))
+// const unsubscribe = store.subscribe(() => console.log('Updated state ', store.getState()))
+
+//since logger is added as middleware, so remove the console from above
+const unsubscribe = store.subscribe(() => {})
 
 //Responsibility 3: Provides a dispatched method to update the state
 store.dispatch(buyCake())
