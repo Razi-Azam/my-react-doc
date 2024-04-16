@@ -993,3 +993,32 @@ const names = ['Ghazal','Homa','Sumbul']
 
 ## Styling and CSS Basics
 [Go to Top](#topics)
+There are different ways of styling React Components:
+- CSS stylesheets
+- Inline styling
+- CSS Modules
+- CSS in JS Libraries [Styled Components]
+
+### [1] CSS stylesheets
+- Create a file named “myStyle.css” and write the css.
+- Create another file named ‘StyleSheet.js’.
+
+#### StyleSheet.js
+```javascript
+import React from 'react'
+import './myStyle.css'
+
+function StyleSheet() {
+    return (
+        <div>
+            <h1 className='primary'>Stylesheet</h1>
+        </div>
+    )
+}
+
+export default StyleSheet
+
+```
+
+
+	
