@@ -150,3 +150,4 @@ store.dispatch(buyIceCream())
 
 //Responsibility 4: Unsubscribe from the store
 unsubscribe()
+
