@@ -29,6 +29,9 @@ import DocTitleTwo from './components/08custom-hook/DocTitleTwo'
 import CounterOne from './components/08custom-hook/CounterOne';
 import CounterTwo from './components/08custom-hook/CounterTwo';
 import UserForm from './components/08custom-hook/UserForm'
+import CakeContainer from './components/09react-redux-example/CakeContainer'
+import { Provider } from 'react-redux'
+import store from './redux/store'
 
 
 //create a context
@@ -61,7 +64,9 @@ function App() {
     <>
 
       {/*  React-Redux Cake Shop App */}
-      
+      <Provider store={store}>
+        <CakeContainer />
+      </Provider>
 
       {/*  Custom Hook  example 3 
       <UserForm /> */}

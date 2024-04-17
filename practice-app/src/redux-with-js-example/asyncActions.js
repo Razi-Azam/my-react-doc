@@ -80,7 +80,7 @@ const fetchUsers = () => {
             .catch(error => {
                 //error.message is the error description
                 dispatch(fetchUsersFailure(error.message))
-            })
+            }) 
     }
 }
 

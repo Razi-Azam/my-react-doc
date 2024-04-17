@@ -15,14 +15,14 @@ import logger from 'redux-logger';
 const BUY_CAKE = 'BUY_CAKE'
 const BUY_ICECREAM = 'BUY_ICECREAM'
 
-function buyCake() {
+function buyCake1() {
     return {
         type: BUY_CAKE,
         info: 'First redux action'
     }
 }
 
-function buyIceCream() {
+function buyIcecream1() {
     return {
         type: BUY_ICECREAM,
         info: 'Second redux action'
@@ -140,12 +140,12 @@ console.log('Initial state', store.getState())
 const unsubscribe = store.subscribe(() => {})
 
 //Responsibility 3: Provides a dispatched method to update the state
-store.dispatch(buyCake())
-store.dispatch(buyCake())
-store.dispatch(buyCake())
+store.dispatch(buyCake1())
+store.dispatch(buyCake1())
+store.dispatch(buyCake1())
 
-store.dispatch(buyIceCream())
-store.dispatch(buyIceCream())
+store.dispatch(buyIcecream1())
+store.dispatch(buyIcecream1())
 
 
 //Responsibility 4: Unsubscribe from the store
