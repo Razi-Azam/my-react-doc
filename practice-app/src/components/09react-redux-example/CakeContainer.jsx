@@ -1,17 +1,20 @@
 import React from 'react'
 //to connect the mapStatetoProps and mapDispatchToProps to the CakeContainer component
 import { connect } from 'react-redux'
+import Container from '../ui-comps/Container'
 import Heading from '../ui-comps/Heading'
 import Button from '../ui-comps/Button'
 import { buyCakes } from '../../redux'
 
+
 //this props is mapped to the state of the store and action creators
 function CakeContainer(props) {
   return (
-    <div>
+    <Container>
+        <p>using mapStatetoProps and mapDispatchToProps </p>
         <Heading><h2>Number of cakes - {props.numOfCakes}</h2></Heading>
         <Button handleClick={props.buyCakes}>Buy Cake</Button>
-    </div>
+    </Container>
   )
 }
 

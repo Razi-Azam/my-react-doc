@@ -32,6 +32,8 @@ import UserForm from './components/08custom-hook/UserForm'
 import CakeContainer from './components/09react-redux-example/CakeContainer'
 import { Provider } from 'react-redux'
 import store from './redux/store'
+import HookCakeContainer from './components/10useSelector-hook/HookCakeContainer'
+import DispatchCakeContainer from './components/11useDispatch-hook/DispatchCakeContainer'
 
 
 //create a context
@@ -63,9 +65,18 @@ function App() {
   return (
     <>
 
-      {/*  React-Redux Cake Shop App */}
+      {/*  React Redux Examples */}
       <Provider store={store}>
+
+        {/*  useSelector hook by react-redux */}
+        <DispatchCakeContainer />
+
+        {/*  useSelector hook by react-redux */}
+        <HookCakeContainer />
+
+        {/*  React-Redux Cake Shop App */}
         <CakeContainer />
+        
       </Provider>
 
       {/*  Custom Hook  example 3 
