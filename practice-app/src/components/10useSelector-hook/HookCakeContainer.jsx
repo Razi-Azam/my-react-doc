@@ -5,7 +5,7 @@ import Button from '../ui-comps/Button'
 import Container from '../ui-comps/Container'
 
 function HookCakeContainer() {
-    const numOfCakes = useSelector(state => state.numOfCakes)
+    const numOfCakes = useSelector(state => state.cake.numOfCakes)
   return (
     <Container>
       <p>useSelector Hook</p>

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import Container from '../ui-comps/Container'
 import Heading from '../ui-comps/Heading'
 import Button from '../ui-comps/Button'
-import { buyIceCream } from '../../redux/iceCream/iceCreamActions'
+import { buyIceCream } from '../../redux'
 
 
 //this props is mapped to the state of the store and action creators
@@ -13,7 +13,7 @@ function IceCreamContainer(props) {
     <Container>
         <p>using mapStatetoProps and mapDispatchToProps </p>
         <Heading><h2>Number of icecream - {props.numOfIceCreams}</h2></Heading>
-        <Button handleClick={props.buyIceCream}>Buy Icecream</Button>
+        <Button handleClick={props.buyIceCream}>Buy Ice Cream</Button>
     </Container>
   )
 }
@@ -23,7 +23,7 @@ function IceCreamContainer(props) {
 //in this function, the state from the redux store is mapped to our component props
 const mapStatetoProps = state => {
     return {
-        numOfIceCreams: state.numOfIceCreams
+        numOfIceCreams: state.iceCream.numOfIceCreams
     }
 }
 
