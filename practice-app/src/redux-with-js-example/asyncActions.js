@@ -84,10 +84,17 @@ const fetchUsers = () => {
     }
 }
 
+/*
+    In Redux Toolkit, the configureStore function already 
+    applies the middleware internally, so we don't need to 
+    use applyMiddleware separately.
+*/
+
 //Now, create a redux store
 const store = configureStore({
     reducer,
-    applyMiddleware: applyMiddleware(thunk)
+    // applyMiddleware: applyMiddleware(thunk)
+    middleware: () => [thunk]
 })
 
 //subscribe to the store

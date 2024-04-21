@@ -115,18 +115,25 @@ const store = createStore(reducer)
 
  */
 
+
 const rootReducer = combineReducers({
     cake: cakeRedcuer,
     iceCream: iceCreamReducer
 })
 
+/*
+    In Redux Toolkit, the configureStore function already 
+    applies the middleware internally, so we don't need to 
+    use applyMiddleware separately.
+*/
+
 //create a middleware and pass the logger
-const middleWare = applyMiddleware(logger);
+// const middleWare = applyMiddleware(logger);
 
 //passed 'rootReducer'a s value to the reducer
 const store = configureStore({
     reducer: rootReducer,
-    middleWare,
+    middleWare: () => [logger]
 });
 
    
