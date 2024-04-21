@@ -35,6 +35,7 @@ import store from './redux/store'
 import HookCakeContainer from './components/10useSelector-hook/HookCakeContainer'
 import DispatchCakeContainer from './components/11useDispatch-hook/DispatchCakeContainer'
 import IceCreamContainer from './components/09react-redux-example/IceCreamContainer'
+import NewCakeContainer from './components/09react-redux-example/NewCakeContainer'
 
 
 //create a context
@@ -69,17 +70,20 @@ function App() {
       {/*  React Redux Examples */}
       <Provider store={store}>
 
-        {/*  React-Redux IceCream Shop App */}
-        <IceCreamContainer />
+        {/*  New Cake Container with Input field */}
+        <NewCakeContainer />
+        
+        {/*  React-Redux IceCream Shop App 
+        <IceCreamContainer /> */}
 
-        {/*  useSelector hook by react-redux */}
-        <DispatchCakeContainer />
+        {/*  useSelector hook by react-redux 
+        <DispatchCakeContainer /> */}
 
-        {/*  useSelector hook by react-redux */}
-        <HookCakeContainer />
+        {/*  useSelector hook by react-redux 
+        <HookCakeContainer /> */}
 
-        {/*  React-Redux Cake Shop App */}
-        <CakeContainer />
+        {/*  React-Redux Cake Shop App 
+        <CakeContainer /> */}
         
       </Provider>
 

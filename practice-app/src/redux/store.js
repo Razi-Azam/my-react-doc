@@ -1,5 +1,6 @@
 import { configureStore, applyMiddleware } from '@reduxjs/toolkit'
 import logger from 'redux-logger'
+import { composeWithDevTools } from '@redux-devtools/extension';
 
 import cakeReducer from './cake/cakeReducer'
 //for multiple reducers
@@ -23,7 +24,10 @@ const store = configureStore({
     //here, two important points
     //[1] the `middleware` field must be a callback
     //[2] and it must return an array of middleware
-    middleware: () => [logger]
+    // middleware: () => [logger]
+    //for redux dev tools extension', here use getDefaultMiddleware function
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
+
 })
 
 export default store
