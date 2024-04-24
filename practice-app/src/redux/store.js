@@ -28,6 +28,7 @@ const store = configureStore({
     //[2] and it must return an array of middleware
     // middleware: () => [logger]
     //for redux dev tools extension', here use getDefaultMiddleware function
+    //the thunk middleware allows an action creator to return a function instead of an action
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([logger, thunk])
 
 })
