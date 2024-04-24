@@ -1,6 +1,8 @@
 import { configureStore, applyMiddleware } from '@reduxjs/toolkit'
 import logger from 'redux-logger'
 import { composeWithDevTools } from '@redux-devtools/extension';
+//import redux-thunk
+import {thunk} from 'redux-thunk';
 
 import cakeReducer from './cake/cakeReducer'
 //for multiple reducers
@@ -26,7 +28,7 @@ const store = configureStore({
     //[2] and it must return an array of middleware
     // middleware: () => [logger]
     //for redux dev tools extension', here use getDefaultMiddleware function
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([logger, thunk])
 
 })
 

@@ -37,6 +37,7 @@ import DispatchCakeContainer from './components/11useDispatch-hook/DispatchCakeC
 import IceCreamContainer from './components/09react-redux-example/IceCreamContainer'
 import NewCakeContainer from './components/09react-redux-example/NewCakeContainer'
 import ItemContainer from './components/09react-redux-example/ItemContainer'
+import UserContainer from './components/09react-redux-example/UserContainer'
 
 
 //create a context
@@ -70,14 +71,16 @@ function App() {
 
       {/*  React Redux Examples */}
       <Provider store={store}>
+        {/*  Async actions using axios and Redux Thunk */}
+        <UserContainer />
 
         {/*  Itemcontainer for both cake and icecream
-            pass cake or icecream to show it */}
+            pass cake or icecream to show it 
         <ItemContainer cake />
-        <ItemContainer />
+        <ItemContainer /> */}
 
-        {/*  New Cake Container with Input field */}
-        <NewCakeContainer />
+        {/*  New Cake Container with Input field 
+        <NewCakeContainer /> */}
         
         {/*  React-Redux IceCream Shop App 
         <IceCreamContainer /> */}
