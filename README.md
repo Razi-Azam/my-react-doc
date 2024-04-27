@@ -21,6 +21,9 @@ Special Credit: [Codevolution](https://youtu.be/QFaFIcGhPoM?si=eqV1RlPn3DNjwfPN)
 
 [7. Styling and CSS Basics](#styling-and-css-basics)
 
+[8. Basics of Form Handling](#basics-of-form-handling)
+
+
 
 ##  React Elements and Components 
 [Go to Top](#topics)
@@ -1052,4 +1055,106 @@ function StyleSheet(props) {
 }
 
 ```
-	
+
+### To apply multiple classes:
+- The template literal can be used to apply the multiple classes in a component.
+
+#### myStyle.css
+```javascript
+.primary {
+    color: orange;
+}
+
+.font-xl {
+    font-size: 72px;
+}
+
+```
+
+#### App.js
+```javascript
+function App() {
+  return (
+    <div className="App">
+      <StyleSheet primary={true} />
+
+```
+
+#### StyleSheet.js
+```javascript
+function StyleSheet(props) {
+    const className = props.primary ? 'primary' : ''
+
+    return (
+        <div>
+            <h1 className={`${className} font-xl`}>Stylesheet</h1>
+        </div>
+    )
+}
+
+```
+
+#### Output:
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/df7481c9-f0dd-4f39-b5f4-68bc7435dd6e)
+
+
+### Inline styling
+- Define the style object as a variable outside the function in a component.
+- Use the style attribute and assign the style object to it.
+
+#### Inline.js
+```javascript
+import React from 'react'
+
+const heading = {
+    fontSize: '72px',
+    color: 'blue'
+}
+
+function Inline() {
+    return (
+        <div>
+            <h1 style={heading}>Inline</h1>
+        </div>
+    )
+}
+
+export default Inline
+
+```
+#### Output:
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/a2f3749b-ef0a-4ac3-9623-af17f09ec050)
+
+
+### CSS Modules 📝
+- This feature is available with version 2 or higher.
+- The file name must be suffix with “.module.css”.
+- One of the great benefits of using CSS modules is to use the same class name in multiple files without clashes.
+- In other words, classes in modular css are locally scoped by default.
+
+#### App.js
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/abf8f69e-b266-4c9b-ac29-97f36221f45c)
+
+#### appStyles.css
+```javascript
+.error {
+    color: red;
+}
+
+```
+
+#### appStyles.module.css
+```javascript
+.success {
+    color: green;
+}
+
+```
+#### Output:
+![image](https://github.com/Razi-Azam/my-react-doc/assets/106505820/550a807d-798d-4cfd-89e4-b32bc463dd46)
+
+
+---
+
+## Basics of Form Handling
+[Go to Top](#topics)
