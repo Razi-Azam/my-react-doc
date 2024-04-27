@@ -1020,5 +1020,36 @@ export default StyleSheet
 
 ```
 
+#### myStyle.css
+```javascript
+.primary {
+    color: orange;
+}
 
+```
+
+### Conditionally apply a class based on the props and states:
+
+#### App.js
+```javascript
+function App() {
+  return (
+    <div className="App">
+      <StyleSheet primary={false} />
+
+```
+
+#### Stylesheet.js
+```javascript
+function StyleSheet(props) {
+    const className = props.primary ? 'primary' : ''
+
+    return (
+        <div>
+            <h1 className={className}>Stylesheet</h1>
+        </div>
+    )
+}
+
+```
 	
